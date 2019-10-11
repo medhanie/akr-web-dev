@@ -1,0 +1,17 @@
+FROM ubuntu:latest
+
+MAINTAINER Medhanie Mihreteab "medhanie@outlook.com"
+
+RUN apt-get update && apt-get install -y openjdk-8-jdk
+
+EXPOSE 80
+
+WORKDIR /usr/local/tomcat/webapps/
+
+RUN rm -rf WORKDIR/*
+
+ADD target/akr-web-main.war .
+
+JAVA_OPTS="-Dspring.profiles.active=production"
+
+CMD ["catalina.sh", "run"]
