@@ -1,14 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Configuration>
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
-			<PatternLayout
-				pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
+			<PatternLayout pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />
 		</Console>
 
-		<RollingFile name="RollingFile"
-			fileName="./logs/eri-ent-main.log"
-			filePattern="./logs/$${date:yyyy-MM}/eri-ent-main-%d{-dd-MMMM-yyyy}-%i.log.gz">
+		<RollingFile name="RollingFile" fileName="./logs/eri-ent-main.log" filePattern="./logs/$${date:yyyy-MM}/eri-ent-main-%d{-dd-MMMM-yyyy}-%i.log.gz">
 			<PatternLayout>
 				<pattern>%d %p %C{1.} [%t] %m%n</pattern>
 			</PatternLayout>
@@ -21,7 +18,7 @@
 	</Appenders>
 
 	<Loggers>
-		<Root level="DEBUG">
+		<Root level="INFO">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="RollingFile" />
 		</Root>

@@ -1,28 +1,25 @@
 version: "3"
 
 services:
+  akr-web-app:
+    image: medhanie/akr-web-app
+    networks:
+      - akr-web-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - database
 
- eri-ent-app:
-  image: medhanie/eri-ent-app
-  networks:
-   - eri-ent-network
-  ports:
-   - 8080:8080
-  depends_on:
-    - database
+  database:
+    image: mysql
+    networks:
+      - akr-web-network
+    ports:
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=changeitpls
+      - MYSQL_DATABASE=erient
+    volumes:
+      - /Users/medhanie/db/mysql:/var/lib/mysql
 
- database:
-  image: mysql
-  networks:
-   - eri-ent-network
-  ports:
-    - 3306
-  environment:
-   - MYSQL_ROOT_PASSWORD=changeitpls
-   - MYSQL_DATABASE=erient
- #  ERIENT_DB_LOCATION = /Users/medhanie/db/mysql
-  volumes:
-    - /Users/medhanie/db/mysql:/var/lib/mysql
-
-networks:
- eri-ent-network:
+networks: akr-web-network:

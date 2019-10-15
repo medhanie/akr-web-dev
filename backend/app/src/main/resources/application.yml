@@ -5,15 +5,10 @@ spring:
       ddl-auto: validate
 
   datasource:
-    url: jdbc:mysql://database:3306/erient 
+    url: jdbc:mysql://localhost:3306/akrdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: changeitpls
     driver-class-name: com.mysql.jdbc.Driver
-    
-youtube:
-  apiKey: enterKeyHere
-  userId: putyouridhere
-  password: putyourpasswordhere
 project:
-  name: eri-ent-project
-  version: dev
+  name: akr-web-project
+  profile: dev
