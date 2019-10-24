@@ -1,3 +1,9 @@
+akrweb:
+  http:
+    port: 8080
+  https:
+    port: 8443
+
 spring:
   jpa:
     database: MYSQL
@@ -12,3 +18,12 @@ spring:
 project:
   name: akr-web-project
   profile: dev
+
+server:
+  port: ${akrweb.https.port}
+  ssl:
+    key-store-password: password
+    key-store: classpath:keystore_dev.p12
+    key-store-type: PKCS12
+    key-alias: akrwebdevcert
+

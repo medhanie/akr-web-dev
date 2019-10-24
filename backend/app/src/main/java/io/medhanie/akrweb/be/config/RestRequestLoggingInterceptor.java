@@ -1,4 +1,4 @@
-package io.medhanie.erient.be.config;
+package io.medhanie.akrweb.be.config;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

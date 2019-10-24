@@ -17,3 +17,4 @@ bin
 .env.development.local
 .env.test.local
 .env.production.local
+.sts4-cache/

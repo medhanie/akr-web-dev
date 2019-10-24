@@ -1,4 +1,4 @@
-package io.medhanie.erient.be.controllers;
+package io.medhanie.akrweb.be.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,13 +9,12 @@ public class WelcomeController {
 
 	@GetMapping("/greeting")
 	public String greeting() {
-		return "Application is up.";
-	}
-	
-	@RequestMapping("/greetings")
-	public String greetings() {
-		return "Still Running ...";
+		return "Application{user} is up.";
 	}
 
+	@RequestMapping("/member/greeting")
+	public String greetings() {
+		return "Application{member} is running";
+	}
 
 }
