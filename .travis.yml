@@ -1,9 +1,6 @@
 language: java
 jdk: oraclejdk11
  
-env:
- global:
-   - REPO="medhanie/akr-web-dev"
-   - CI_HOME=`pwd`/$REPO
-
-script: build-backend.sh
+script:
+ - cd backend
+ - mvn clean install
