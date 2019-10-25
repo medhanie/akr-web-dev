@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @Order(101)
@@ -19,13 +20,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/home", "/register", "/login").permitAll().anyRequest().authenticated()
-                .and().formLogin().and().logout();
+
+        http.authorizeRequests().antMatchers("/", "/forgotpassword", "/resetpassword").permitAll()
+                .antMatchers("/admin", "/admin/**").hasRole("ADMIN").antMatchers("/user", "/user/**").hasRole("USER")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/").failureUrl("/login?error").permitAll()
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll().and()
+                .exceptionHandling().accessDeniedPage("/notfound");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().withDefaultSchema().dataSource(dataSource);
+        auth.jdbcAuthentication().dataSource(dataSource);
     }
 
     @Override
