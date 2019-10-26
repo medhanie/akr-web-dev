@@ -20,7 +20,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests().antMatchers("/", "/forgotpassword", "/resetpassword").permitAll()
                 .antMatchers("/admin", "/admin/**").hasRole("ADMIN").antMatchers("/user", "/user/**").hasRole("USER")
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/").failureUrl("/login?error").permitAll()
