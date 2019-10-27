@@ -10,10 +10,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import io.medhanie.akrweb.be.controllers.BaseController;
 
-/**
- * Created by Medhanie on 3/28/2016.
- */
-@WebAppConfiguration
+//@WebAppConfiguration
 public abstract class AbstractControllerTest extends AbstractTest {
 
     @Autowired
