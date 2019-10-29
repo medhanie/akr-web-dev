@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.logging.log4j.LogManager;
@@ -19,6 +16,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -27,10 +25,13 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import io.medhanie.akrweb.be.interceptors.RequestInterceptor;
 import springfox.documentation.builders.PathSelectors;
@@ -57,6 +58,7 @@ public class MainConfig implements WebMvcConfigurer {
 	private RequestInterceptor requestInterceptor;
 
 	@Bean
+	@Profile("prod")
 	public ServletWebServerFactory servletContainer() {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
 			@Override
@@ -131,6 +133,7 @@ public class MainConfig implements WebMvcConfigurer {
 	}
 
 	@Bean
+	@Profile("dev")
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any()).build();

@@ -18,3 +18,4 @@ bin
 .env.test.local
 .env.production.local
 .sts4-cache/
+.vscode

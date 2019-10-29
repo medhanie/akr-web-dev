@@ -1,4 +1,4 @@
-package io.medhanie.erient.exception.handler;
+package io.medhanie.akrweb.exception.handler;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -6,15 +6,15 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.util.WebUtils;
 
-import io.medhanie.erient.exception.ApplicationException;
+import io.medhanie.akrweb.exception.ApplicationException;
 
-@ControllerAdvice
+@Controller
 @RestController
 public class ApplicationRestExceptionHandler {
 	private static final Logger logger = LogManager.getLogger(ApplicationRestExceptionHandler.class);

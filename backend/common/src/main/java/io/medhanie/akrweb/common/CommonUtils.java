@@ -1,4 +1,4 @@
-package io.medhanie.erient.common;
+package io.medhanie.akrweb.common;
 
 public class CommonUtils {
 

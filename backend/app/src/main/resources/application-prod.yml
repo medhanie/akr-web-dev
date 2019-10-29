@@ -8,7 +8,7 @@ spring:
   jpa:
     database: MYSQL
     hibernate:
-      ddl-auto: validate 
+      ddl-auto: validate
 
   datasource:
     url: jdbc:mysql://localhost:3306/akrdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
@@ -16,15 +16,21 @@ spring:
     password: changeitpls
     driver-class-name: com.mysql.cj.jdbc.Driver
     
-  http:
-    converters:
-      preferred-json-mapper: gson
-    
 project:
   name: akr-web-project
+
+server:
+  port: ${akrweb.https.port}
+  ssl:
+    key-store-password: password
+    key-store: classpath:keystore_dev.p12
+    key-store-type: PKCS12
+    key-alias: akrwebdevcert
 
 graphql:
   servlet:
     mapping: /graphql
     enabled: true
     corsEnabled: true
+
+

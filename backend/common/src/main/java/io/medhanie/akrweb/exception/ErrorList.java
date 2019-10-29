@@ -1,4 +1,4 @@
-package io.medhanie.erient.exception;
+package io.medhanie.akrweb.exception;
 
 public enum ErrorList {
 
