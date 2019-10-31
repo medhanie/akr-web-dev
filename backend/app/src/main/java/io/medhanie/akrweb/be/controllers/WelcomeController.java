@@ -1,7 +1,6 @@
 package io.medhanie.akrweb.be.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -12,7 +11,7 @@ public class WelcomeController implements BaseController {
 		return "Application{user} is up.";
 	}
 
-	@RequestMapping("/member/greeting")
+	@GetMapping("/member/greeting")
 	public String greetings() {
 		return "Application{member} is running";
 	}

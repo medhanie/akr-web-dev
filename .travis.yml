@@ -1,5 +1,12 @@
 language: java
 jdk: oraclejdk11
+install: true
+
+addons:
+  sonarcloud:
+    organization: "akr-web-dev"
+    token:
+      secure: "0KxWqggZTgMTzWkmU6Hmv7mzapDrP87nwr2Xjlhcm/smk5BKn3m746sEg9SXLwffSZgzbYIy27filS71uCR70tRpn8AiQgccSuN/Q90G6kxZOCmaQRMayq2NZLSkZFPT2RVWwM0mPEJ5urzbt2j13rkBQx5MfAniz2Y7P86tmqaPy7diY7ARHKrbpqcoaP7wU0LYbiCIiwSljzjt5Qb0t7sDe+wYEFrmGFvseBgp8NPeErV76xJWekaXYjNRL1r9YHyrQ03rJ7NTE4O8d9vu/Sx1f+1B0EG4ddh11UzViTNTFpzu08dXn10wxgEvJcdT7jtQDpawdKwcT2ormZQF1KzAXolSBanG3pGIyKOcHD4gIqSV1hs/ZpACDS4z4AiuccbJ0xd+A4zq/XR0GJQzaw3iI52RhwHHbzWzb7sgBzQ4oxklp8FgiB1xkzHy+/XK6WU04yeaOGOjM0aAxKoJaxFlpOTizBCdw1PxZal4Zu/Ja83uxGAnW21FbsE3JkDEWZj8aeawOQcIxTAuF9IWIO64ZAhXznEaQvm+FXp4qSL0VhIF4VTD+xwKC+tJAbMGMzhVilP3+hQoPvGsllAdhYbU7OQ+uYB/kQh/+5KXtT/gzAOxd9CPmxFeGIq0T/fsUMjfoizfamYmsCp7jqPBqB3aF+10cmSwz5InBMdQ6wU="
 
 script:
   - cd backend
@@ -7,3 +14,9 @@ script:
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+    - "$HOME/.sonar/cache"

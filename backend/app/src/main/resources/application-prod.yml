@@ -15,6 +15,10 @@ spring:
     username: root
     password: changeitpls
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  http:
+    converters:
+      preferred-json-mapper: gson
     
 project:
   name: akr-web-project

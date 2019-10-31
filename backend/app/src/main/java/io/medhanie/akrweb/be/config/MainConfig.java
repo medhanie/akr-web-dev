@@ -85,7 +85,7 @@ public class MainConfig implements WebMvcConfigurer {
 	}
 
 	@Bean
-	public Gson objectMapper() throws Exception {
+	public Gson objectMapper() {
 		return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").serializeNulls().create();
 	}
 
@@ -100,7 +100,7 @@ public class MainConfig implements WebMvcConfigurer {
 		restTemplate.setRequestFactory(bufferingClientHttpRequestFactory);
 
 		List<ClientHttpRequestInterceptor> interceptors = restTemplate.getInterceptors();
-		if (interceptors != null && !interceptors.isEmpty()) {
+		if (!interceptors.isEmpty()) {
 			interceptors = new ArrayList<>();
 		}
 		interceptors.add(new RestRequestLoggingInterceptor());

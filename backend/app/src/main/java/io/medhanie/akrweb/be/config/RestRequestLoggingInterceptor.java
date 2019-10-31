@@ -18,16 +18,18 @@ public class RestRequestLoggingInterceptor implements ClientHttpRequestIntercept
 	public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution)
 			throws IOException {
 		String requestString = String.format(
-				"\n\tRequest Method: %s,\n\tReqeust URI: %s,\n\tRequest Headers: %s,\n\tRequest Body: %s",
-				request.getMethod(), request.getURI(), request.getHeaders(),
+				"%s\tRequest Method: %s,%s\tReqeust URI: %s,%s\tRequest Headers: %s, %x\tRequest Body: %s",
+				System.lineSeparator(), request.getMethod(), System.lineSeparator(), request.getURI(),
+				System.lineSeparator(), request.getHeaders(), System.lineSeparator(),
 				new String(body, Charset.forName("UTF-8")));
 		logger.info(requestString);
 
 		ClientHttpResponse response = execution.execute(request, body);
 
 		String responseString = String.format(
-				"\n\tResponse Status Code: %s,\n\tResponse Headers: %s,\n\tResponse Body: %s", response.getStatusCode(),
-				response.getHeaders(), StreamUtils.copyToString(response.getBody(), Charset.defaultCharset()));
+				"%s\tResponse Status Code: %s,%s\tResponse Headers: %s,%s\tResponse Body: %s", System.lineSeparator(),
+				response.getStatusCode(), System.lineSeparator(), response.getHeaders(), System.lineSeparator(),
+				StreamUtils.copyToString(response.getBody(), Charset.defaultCharset()));
 		logger.info(responseString);
 
 		return response;

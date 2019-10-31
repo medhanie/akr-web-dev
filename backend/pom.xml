@@ -224,25 +224,25 @@
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
-				<version>2.9.6</version>
+				<version>[2.9.10.1,)</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
-				<version>2.9.6</version>
+				<version>[2.9.10.1,)</version>
 			</dependency>
-		
+
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-core</artifactId>
-				<version>2.9.6</version>
+				<version>[2.9.10.1,)</version>
 			</dependency>
-		
+
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
-				<version>2.9.6</version>
+				<version>[2.9.10.1,)</version>
 			</dependency>
 
 			<dependency>
@@ -256,7 +256,7 @@
 				<artifactId>javassist</artifactId>
 				<version>3.23.1-GA</version>
 			</dependency>
-		
+
 			<dependency>
 				<groupId>cglib</groupId>
 				<artifactId>cglib-nodep</artifactId>
@@ -282,6 +282,15 @@
 		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>11</release>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-help-plugin</artifactId>
 				<version>3.2.0</version>
 				<executions>
@@ -305,7 +314,7 @@
 					</argLine>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
@@ -314,15 +323,6 @@
 					<argLine>
 						--illegal-access=permit
 					</argLine>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<release>11</release>
 				</configuration>
 			</plugin>
 

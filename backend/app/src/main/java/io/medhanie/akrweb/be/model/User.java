@@ -1,7 +1,5 @@
 package io.medhanie.akrweb.be.model;
 
-import javax.persistence.Entity;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
