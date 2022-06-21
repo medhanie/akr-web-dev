@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.boot.version>2.1.9.RELEASE</spring.boot.version>
-		<mysql.connector.version>8.0.18</mysql.connector.version>
+		<mysql.connector.version>8.0.28</mysql.connector.version>
 
 		<!-- Properties are prefixed with flyway. -->
 		<flyway.user>root</flyway.user>
