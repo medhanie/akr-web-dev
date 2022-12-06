@@ -40,7 +40,7 @@
     "eslint-plugin-react": "^7.16.0",
     "fetch-mock": "^7.5.1",
     "html-webpack-plugin": "^3.2.0",
-    "http-server": "^0.11.1",
+    "http-server": "^0.11.2",
     "immer": "^4.0.1",
     "jest": "^24.9.0",
     "json-server": "^0.15.1",
